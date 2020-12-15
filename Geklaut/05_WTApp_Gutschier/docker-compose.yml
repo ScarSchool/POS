@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  tomcat:
+    image: tomcat
+    container_name: WtWS
+    ports:
+      - 127.0.0.1:8080:8080
+    depends_on:
+      - mysqlDB
+    volumes:
+      - ./target:/usr/local/tomcat/webapps/
+  mysqlDB:
+    image: mysql
+    container_name: WtDB
+    restart: always
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: usr
+      MYSQL_PASSWORD: pwd
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3316:3306     #3306 already in use by my local mysql instance
+    expose:
+      - 3306
