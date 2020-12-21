@@ -11,13 +11,12 @@ import java.util.List;
 @Data
 @Entity
 public class Mail {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   private int nr;
-  private LocalDate at;
+  private LocalDate date;
   private LocalTime time;
   private String subject;
   private String content;

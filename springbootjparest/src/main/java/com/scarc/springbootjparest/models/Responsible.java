@@ -1,13 +1,15 @@
 package com.scarc.springbootjparest.models;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
-public class Responsible {
+@SuperBuilder
+public class Responsible extends User {
     @ManyToOne
     private Mail mail;
 

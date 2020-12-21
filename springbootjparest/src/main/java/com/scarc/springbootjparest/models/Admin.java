@@ -1,13 +1,15 @@
 package com.scarc.springbootjparest.models;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
-public class Admin {
+@SuperBuilder
+public class Admin extends User {
 
     @OneToMany(mappedBy = "sender", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Mail> mails;

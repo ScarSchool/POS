@@ -1,13 +1,15 @@
 package com.scarc.springbootjparest.models;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
-public class Pupil {
+@SuperBuilder
+public class Pupil extends User {
 
 
   @ManyToMany
