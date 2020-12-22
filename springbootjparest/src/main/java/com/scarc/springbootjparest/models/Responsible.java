@@ -1,6 +1,9 @@
 package com.scarc.springbootjparest.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
@@ -9,6 +12,9 @@ import java.util.List;
 @Data
 @Entity
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class Responsible extends User {
     @ManyToOne
     private Mail mail;

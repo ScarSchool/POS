@@ -1,6 +1,6 @@
 package com.scarc.springbootjparest.models;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.File;
@@ -10,6 +10,9 @@ import java.util.List;
 
 @Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Mail {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +30,7 @@ public class Mail {
   @ManyToOne
   private Admin sender;
 
+  @EqualsAndHashCode.Exclude
   @OneToMany(mappedBy = "mail", orphanRemoval = true, cascade = CascadeType.ALL)
   private List<Responsible> receivers;
 
