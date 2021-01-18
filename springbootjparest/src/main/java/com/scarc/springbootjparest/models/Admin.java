@@ -1,31 +1,29 @@
 package com.scarc.springbootjparest.models;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.List;
 
-@Data
 @Entity
+@Data
 @SuperBuilder
+@NoArgsConstructor
+@ToString(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
+@JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class,
+    property = "id")
 public class Admin extends User {
-
-    @OneToMany(mappedBy = "sender", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sender")
     private List<Mail> mails;
 
-    @OneToMany(mappedBy = "organiser", orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<Event> organises;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "organizer")
+    private List<Event> organizes;
 }

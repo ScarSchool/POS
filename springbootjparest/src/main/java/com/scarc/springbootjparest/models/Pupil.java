@@ -1,33 +1,28 @@
 package com.scarc.springbootjparest.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import java.util.List;
 
-@Data
 @Entity
+@Data
 @SuperBuilder
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class Pupil extends User {
-
-
-  @ManyToMany
-  @JoinTable(
-          name = "joins",
-          joinColumns = @JoinColumn(name = "pupil_id"),
-          inverseJoinColumns = @JoinColumn(name = "timeslot_id"))
-  private List<TimeSlot> joins;
-
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Long getId() {
-    return id;
-  }
+    @EqualsAndHashCode.Exclude
+    @ManyToMany
+    @JoinTable(
+            name = "joins",
+            joinColumns = @JoinColumn(name = "pupil_id"),
+            inverseJoinColumns = @JoinColumn(name = "timeslot_id"))
+    private List<TimeSlot> joins;
 }
