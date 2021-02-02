@@ -11,15 +11,20 @@ customList_t* init(){
 	list->first = NULL;
 	return list;
 }
+
+
+
 void* getAt(customList_t *list, int idx){
 	customListItem_t* current = list->first;
 	if (idx < 0 || idx >= list->size)
 	{
+		// pfui
 		return NULL;
 	}
 
 	for (int i = 0; i < idx; i++)
 	{
+		// TODO: add the thing from above here
 		current = current->next;
 	}
 

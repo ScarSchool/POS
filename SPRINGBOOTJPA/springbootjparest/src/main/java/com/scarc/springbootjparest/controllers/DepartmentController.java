@@ -28,7 +28,7 @@ public class DepartmentController {
         return svc.createDepartment(Department);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public Department updateDepartment(@RequestBody Department Department) {
         return svc.createDepartment(Department);
     }

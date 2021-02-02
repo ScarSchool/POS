@@ -28,7 +28,7 @@ public class CompanyController {
         return svc.createCompany(Company);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public Company updateCompany(@RequestBody Company Company) {
         return svc.createCompany(Company);
     }

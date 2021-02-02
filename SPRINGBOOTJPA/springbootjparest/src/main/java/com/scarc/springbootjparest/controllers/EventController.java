@@ -28,7 +28,7 @@ public class EventController {
         return svc.createEvent(Event);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public Event updateEvent(@RequestBody Event Event) {
         return svc.createEvent(Event);
     }

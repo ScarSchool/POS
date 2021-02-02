@@ -28,7 +28,7 @@ public class AdminController {
         return svc.createAdmin(Admin);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public Admin updateAdmin(@RequestBody Admin Admin) {
         return svc.createAdmin(Admin);
     }

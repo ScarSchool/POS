@@ -1,3 +1,5 @@
+#!/bin/sh
+
 src="./src"
 native="./native"
 libs="./lib"
@@ -19,6 +21,12 @@ modulePaths=/opt/javafx-sdk-12.0.1/lib
 modules="--module-path $modulePaths --add-modules=ALL-MODULE-PATH"
 
 javac -Xlint:unchecked -sourcepath $src $modules $mainFile -d $bin -h $native
+if [ "$?" == "" ]; then
+    echo "compiled successfully"
+else
+    echo "compile error"
+    exit -1 
+fi
 
 mkdir -p $libs
 g++ -fPIC -I$JAVA_HOME/include -I$JAVA_HOME/include/linux -c $nativeFile -o $nativelib

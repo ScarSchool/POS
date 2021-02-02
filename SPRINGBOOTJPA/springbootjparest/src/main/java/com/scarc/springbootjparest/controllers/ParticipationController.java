@@ -28,7 +28,7 @@ public class ParticipationController {
         return svc.createParticipation(Participation);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public Participation updateParticipation(@RequestBody Participation Participation) {
         return svc.createParticipation(Participation);
     }

@@ -28,7 +28,7 @@ public class PupilController {
         return svc.createPupil(Pupil);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public Pupil updatePupil(@RequestBody Pupil Pupil) {
         return svc.createPupil(Pupil);
     }

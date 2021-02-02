@@ -28,7 +28,7 @@ public class ResponsibleController {
         return svc.createResponsible(Responsible);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public Responsible updateResponsible(@RequestBody Responsible Responsible) {
         return svc.createResponsible(Responsible);
     }

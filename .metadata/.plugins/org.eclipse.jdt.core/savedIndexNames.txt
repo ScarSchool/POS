@@ -1,11 +1,3 @@
 INDEX VERSION 1.131+/mnt/LinuxShare/.metadata/.plugins/org.eclipse.jdt.core
-1102055100.index
-4107146370.index
-1074506095.index
-46890770.index
-463160150.index
 3251467686.index
-2996127803.index
-3027717191.index
-3720587181.index
-113067503.index
+213172934.index

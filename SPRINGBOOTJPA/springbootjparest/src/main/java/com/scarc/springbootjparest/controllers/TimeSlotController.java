@@ -28,7 +28,7 @@ public class TimeSlotController {
         return svc.createTimeSlot(TimeSlot);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public TimeSlot updateTimeSlot(@RequestBody TimeSlot TimeSlot) {
         return svc.createTimeSlot(TimeSlot);
     }

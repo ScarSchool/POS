@@ -14,7 +14,9 @@ import java.util.List;
 
 @Builder
 @Entity
-@Data
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIdentityInfo(

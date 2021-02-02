@@ -28,7 +28,7 @@ public class MailController {
         return svc.createMail(Mail);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public Mail updateMail(@RequestBody Mail Mail) {
         return svc.createMail(Mail);
     }

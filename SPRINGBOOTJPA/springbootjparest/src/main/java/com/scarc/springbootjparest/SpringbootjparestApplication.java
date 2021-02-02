@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,27 +22,32 @@ import java.util.List;
 @RestController
 public class SpringbootjparestApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringbootjparestApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootjparestApplication.class, args);
+	}
 
-    @GetMapping("/api/v1/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
-    }
+	@GetMapping("/api/v1/hello")
+	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+		return String.format("Hello %s!", name);
+	}
 
-    @Bean
-    @Transactional
-    public CommandLineRunner mockData(AdminRepository adminRepo, PupilRepository pupilRepo, ResponsibleRepository responsibleRepo,
-										 ParticipationRepository participationRepo, TimeSlotRepository timeSlotRepo, MailRepository mailRepo,
-										 EventRepository eventRepo, DepartmentRepository departmentRepo, CompanyRepository companyRepo) {
-        System.out.println("Command line runner?");
+	@Bean
+	@Transactional
+	//@Profile("Test")
+	public CommandLineRunner mockData(AdminRepository adminRepo, PupilRepository pupilRepo, ResponsibleRepository responsibleRepo,
+									  ParticipationRepository participationRepo, TimeSlotRepository timeSlotRepo, MailRepository mailRepo,
+									  EventRepository eventRepo, DepartmentRepository departmentRepo, CompanyRepository companyRepo) {
+		System.out.println("Command line runner?");
+		User u = User.builder().name("hugo").build();
 
-       Admin admin1 = Admin.builder()
+		Admin admin1 = Admin.builder()
 				.name("Guy").eMail("guy@admin.at")
 				.pwdToken("GEHEIM").build();
 		Admin admin2 = Admin.builder()
 				.name("guy2").eMail("electric@boogaloo.at")
+				.pwdToken("GEHEIM").build();
+		Admin admin3 = Admin.builder()
+				.name("deleterAdmin").eMail("electric@boogaloo.at")
 				.pwdToken("GEHEIM").build();
 
 		Pupil pupil1 = Pupil.builder()
@@ -49,6 +55,9 @@ public class SpringbootjparestApplication {
 				.pwdToken("geheim2").build();
 		Pupil pupil2 = Pupil.builder()
 				.name("p2").eMail("beste@htl.at")
+				.pwdToken("geheim3").build();
+		Pupil pupil3 = Pupil.builder()
+				.name("deleterPupil").eMail("beste@htl.at")
 				.pwdToken("geheim3").build();
 
 		Responsible resp1 = Responsible.builder()
@@ -75,6 +84,8 @@ public class SpringbootjparestApplication {
 				.comments("parti1").paidAlready(0.0).build();
 		Participation parti2 = Participation.builder().price(2019892.11)
 				.comments("parti2").paidAlready(0.0).build();
+		Participation parti3 = Participation.builder().price(2019892.11)
+				.comments("deleterParti").paidAlready(0.0).build();
 
 		Department depart1 = Department.builder().label("Informatik").build();
 		Department depart2 = Department.builder().label("Bautechnik").build();
@@ -95,9 +106,11 @@ public class SpringbootjparestApplication {
 
 		adminRepo.save(admin1);
 		adminRepo.save(admin2);
+		adminRepo.save(admin3);
 
 		pupilRepo.save(pupil1);
 		pupilRepo.save(pupil2);
+		pupilRepo.save(pupil3);
 
 		responsibleRepo.save(resp1);
 		responsibleRepo.save(resp2);
@@ -107,6 +120,7 @@ public class SpringbootjparestApplication {
 
 		participationRepo.save(parti1);
 		participationRepo.save(parti2);
+		participationRepo.save(parti3);
 
 		eventRepo.save(event1);
 		eventRepo.save(event2);
@@ -121,5 +135,5 @@ public class SpringbootjparestApplication {
 		timeSlotRepo.save(timeSlot2);
 
 		return null;
-    }
+	}
 }
