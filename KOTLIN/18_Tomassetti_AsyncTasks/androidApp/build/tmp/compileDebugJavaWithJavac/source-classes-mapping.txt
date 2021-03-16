@@ -1,0 +1,2 @@
+me/scarc/androidApp/BuildConfig.java
+ me.scarc.androidApp.BuildConfig
