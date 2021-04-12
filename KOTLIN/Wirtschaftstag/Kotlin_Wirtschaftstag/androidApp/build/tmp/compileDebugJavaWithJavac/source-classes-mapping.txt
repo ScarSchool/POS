@@ -1,0 +1,10 @@
+me/scarc/androidApp/databinding/ActivityMainBinding.java
+ me.scarc.androidApp.databinding.ActivityMainBinding
+me/scarc/androidApp/DataBindingInfo.java
+ me.scarc.androidApp.DataBindingInfo
+me/scarc/androidApp/BuildConfig.java
+ me.scarc.androidApp.BuildConfig
+me/scarc/androidApp/databinding/ItemEventBinding.java
+ me.scarc.androidApp.databinding.ItemEventBinding
+me/scarc/androidApp/databinding/PageEventsBinding.java
+ me.scarc.androidApp.databinding.PageEventsBinding

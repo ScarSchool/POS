@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\GitHub\\ScarSchool\\POS\\KOTLIN\\Wirtschaftstag\\Kotlin_Wirtschaftstag\\androidApp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_event.xml",
+        "source": "C:\\GitHub\\ScarSchool\\POS\\KOTLIN\\Wirtschaftstag\\Kotlin_Wirtschaftstag\\androidApp\\src\\main\\res\\layout\\item_event.xml"
+    },
+    {
+        "merged": "C:\\GitHub\\ScarSchool\\POS\\KOTLIN\\Wirtschaftstag\\Kotlin_Wirtschaftstag\\androidApp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\GitHub\\ScarSchool\\POS\\KOTLIN\\Wirtschaftstag\\Kotlin_Wirtschaftstag\\androidApp\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\GitHub\\ScarSchool\\POS\\KOTLIN\\Wirtschaftstag\\Kotlin_Wirtschaftstag\\androidApp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\page_events.xml",
+        "source": "C:\\GitHub\\ScarSchool\\POS\\KOTLIN\\Wirtschaftstag\\Kotlin_Wirtschaftstag\\androidApp\\src\\main\\res\\layout\\page_events.xml"
+    }
+]
