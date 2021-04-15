@@ -1,0 +1,19 @@
+package at.scarc.androidApp.models
+
+import java.io.File
+
+data class Mail(
+    var id: Long?,
+    var nr: Int?,
+    var sender: User?,
+    var receivers: List<User>?,
+    var date: String?,
+    var time: String?,
+    var subject: String?,
+    var content: String?,
+    var attachment1: File?,
+    var attachment2: File?,
+    var attachment3: File?,
+) {
+    override fun toString(): String = "$id - $subject: $date"
+}

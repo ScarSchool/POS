@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_login">
+
+    <fragment
+        android:id="@+id/nav_event"
+        android:name="at.scarc.androidApp.ui.event.EventFragment"
+        android:label="@string/menu_event"
+        tools:layout="@layout/fragment_event" >
+        <action
+            android:id="@+id/action_nav_event_to_nav_event_create"
+            app:destination="@id/nav_event_create" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_event_create"
+        android:name="at.scarc.androidApp.ui.event.EventCreateFragment"
+        android:label="Firmentag erstellen"
+        tools:layout="@layout/fragment_event_create" >
+        <action
+            android:id="@+id/action_nav_event_create_to_nav_event"
+            app:destination="@id/nav_event" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="at.scarc.androidApp.ui.loginFragment.LoginFragment"
+        android:label="@string/menu_login" >
+        <action
+            android:id="@+id/action_nav_login_to_nav_event"
+            app:destination="@id/nav_event" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_company"
+        android:name="at.scarc.androidApp.ui.company.CompanyFragment"
+        android:label="@string/menu_company"
+        tools:layout="@layout/fragment_company" >
+        <action
+            android:id="@+id/action_nav_company_to_nav_company_create"
+            app:destination="@id/nav_company_create" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_company_create"
+        android:name="at.scarc.androidApp.ui.company.CompanyCreateFragment"
+        android:label="Firma erstellen"
+        tools:layout="@layout/fragment_company_create" >
+        <action
+            android:id="@+id/action_nav_company_create_to_nav_company"
+            app:destination="@id/nav_company" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_department"
+        android:name="at.scarc.androidApp.ui.department.DepartmentFragment"
+        android:label="@string/menu_department"
+        tools:layout="@layout/fragment_department" >
+        <action
+            android:id="@+id/action_nav_department_to_nav_department_create"
+            app:destination="@id/nav_department_create" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_department_create"
+        android:name="at.scarc.androidApp.ui.department.DepartmentCreateFragment"
+        android:label="Abteilung erstellen" >
+        <action
+            android:id="@+id/action_nav_department_create_to_nav_department"
+            app:destination="@id/nav_department" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_user"
+        android:name="at.scarc.androidApp.ui.user.UserFragment"
+        android:label="@string/menu_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_nav_user_to_nav_user_create"
+            app:destination="@id/nav_user_create" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_user_create"
+        android:name="at.scarc.androidApp.ui.user.UserCreateFragment"
+        android:label="Benutzer erstellen"
+        tools:layout="@layout/fragment_user_create" >
+        <action
+            android:id="@+id/action_nav_user_create_to_nav_user"
+            app:destination="@id/nav_user" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_mail"
+        android:name="at.scarc.androidApp.ui.mail.MailFragment"
+        android:label="@string/menu_mail"
+        tools:layout="@layout/fragment_mail" >
+        <action
+            android:id="@+id/action_nav_mail_to_nav_mail_create"
+            app:destination="@id/nav_mail_create" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_mail_create"
+        android:name="at.scarc.androidApp.ui.mail.MailCreateFragment"
+        android:label="E-Mail schreiben"
+        tools:layout="@layout/fragment_mail_create" >
+        <action
+            android:id="@+id/action_nav_mail_create_to_nav_mail"
+            app:destination="@id/nav_mail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_participation"
+        android:name="at.scarc.androidApp.ui.participation.ParticipationFragment"
+        android:label="@string/menu_participation"
+        tools:layout="@layout/fragment_participation" >
+        <action
+            android:id="@+id/action_nav_participation_to_nav_participation_create"
+            app:destination="@id/nav_participation_create" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_participation_create"
+        android:name="at.scarc.androidApp.ui.participation.ParticipationCreateFragment"
+        android:label="Teilnahme erstellen"
+        tools:layout="@layout/fragment_participation_create" >
+        <action
+            android:id="@+id/action_nav_participation_create_to_nav_participation"
+            app:destination="@id/nav_participation" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_timeslot"
+        android:name="at.scarc.androidApp.ui.timeSlot.TimeSlotFragment"
+        android:label="@string/menu_timeslot"
+        tools:layout="@layout/fragment_timeslot" >
+        <action
+            android:id="@+id/action_nav_timeslot_to_nav_timeslot_create"
+            app:destination="@id/nav_timeslot_create" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_timeslot_create"
+        android:name="at.scarc.androidApp.ui.timeSlot.TimeSlotCreateFragment"
+        android:label="Zeitfenster erstellen"
+        tools:layout="@layout/fragment_timeslot_create" >
+        <action
+            android:id="@+id/action_nav_timeslot_create_to_nav_timeslot"
+            app:destination="@id/nav_timeslot" />
+    </fragment>
+</navigation>
