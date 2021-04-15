@@ -26,7 +26,6 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class EventsFragment : Fragment() {
-
     private lateinit var rootView: View
     private lateinit var eventAdapter: EventsAdapter
     private lateinit var recyclerViewer: RecyclerView
