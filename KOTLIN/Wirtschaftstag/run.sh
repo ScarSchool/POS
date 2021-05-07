@@ -3,8 +3,8 @@ echo "Opening WebBrowser"
 firefox http://localhost:8080/static/index.html
 
 echo "gradling"
-cd ./18_Tomassetti_AsyncTasks
+cd ./WTMobile
 ./gradlew run
 
 echo "Starting emulator"
-~/Android/Sdk/tools/emulator -avd Pixel_2_API_28
+~/Android/Sdk/tools/emulator -avd Pixel_XL_API_29

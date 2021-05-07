@@ -1,2 +1,0 @@
-me/scarc/shared/BuildConfig.java
- me.scarc.shared.BuildConfig

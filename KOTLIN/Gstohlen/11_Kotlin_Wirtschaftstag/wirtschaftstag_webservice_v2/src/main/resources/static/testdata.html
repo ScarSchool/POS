@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a49610004a.js" crossorigin="anonymous"></script>
+
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/htm@3.0.4/dist/htm.js"></script>
+
+  <title>Wirtschaftstag App</title>
+</head>
+<body>
+  <!-- DATA -->
+  <script>
+    const cards = [
+      {
+        nr: 1,
+        title: 'Firmentag anlegen [Admin]',
+        notes: 'CRUD für Events',
+        routes: [
+          {method: 'GET', endpoint: '/events'},
+          {method: 'POST', endpoint: '/events', body: {
+            label: 'FT 2021',
+            date: '2021-05-14',
+            defaultPrice: 120.99,
+            organiser: {type: 'admin', id: 1}
+          }},
+          {method: 'GET', endpoint: '/events/1'},
+          {method: 'DELETE', endpoint: '/events/1'},
+        ],
+      },
+      {
+        nr: 2,
+        title: 'Vorh. Firmen hinzufügen [Admin]',
+        notes: 'Create/Get Participations',
+        routes: [
+          {method: 'POST', endpoint: '/events/1/participations', body: {
+            price: 120.0,
+            paidAlready: 0.0,
+            comments: '...',
+            at: {id: 1},
+            responsible: {type: 'responsible', id: 2},
+            company: {id: 1}
+          }},
+          {method: 'GET', endpoint: '/events/1/participations'},
+        ],
+      },
+      {
+        nr: 3,
+        title: 'Firma anlegen [Admin]',
+        notes: 'CRUD für Companies',
+        routes: [
+          {method: 'GET', endpoint: '/companies'},
+          {method: 'POST', endpoint: '/companies', body: {
+            name: 'Firma',
+            zipTown: 'zip Zippy',
+            street: 'food',
+            phone: 'yes',
+            email: 'firma@mail.com',
+            replyTo: 'repltyto-firma@mail.com',
+            comments: '...'
+          }},
+          {method: 'GET', endpoint: '/companies/1'},
+          {method: 'PUT', endpoint: '/companies/1'},
+          {method: 'DELETE', endpoint: '/companies/1'},
+        ],
+      },
+      {
+        nr: 4,
+        title: 'Vorh. Firmen einladen [Admin]',
+        notes: '? Email mit Einladung senden ?',
+        routes: [],
+      },
+      {
+        nr: 5,
+        title: 'Firma registrieren [Responsible]',
+        notes: 'CRUD für Companies',
+        routes: [
+          {method: 'POST', endpoint: '/companies', body: {
+            name: 'Firma',
+            zipTown: 'zip Zippy',
+            street: 'food',
+            phone: 'yes',
+            email: 'firma@mail.com',
+            replyTo: 'repltyto-firma@mail.com',
+            comments: '...'
+          }},
+          {method: 'PUT', endpoint: '/companies/1', body: {
+            name: 'Firma',
+            zipTown: 'zip Zippy',
+            street: 'food :)',
+            phone: 'nope',
+            email: 'firma@mail.com',
+            replyTo: 'repltyto-firma@mail.com',
+            comments: '...'
+          }},
+          {method: 'GET', endpoint: '/companies'},
+        ],
+      },
+      {
+        nr: 6,
+        title: 'Firma zu einem Firmentag anmelden [Responsible]',
+        notes: 'Create/Get Participations',
+        routes: [
+          {method: 'POST', endpoint: '/events/1/participations', body: {
+            price: 120.0,
+            paidAlready: 0.0,
+            comments: '...',
+            at: {id: 1},
+            responsible: {type: 'responsible', id: 2},
+            company: {id: 1}
+          }},
+          {method: 'GET', endpoint: '/events/1/participations'},
+        ],
+      },
+      {
+        nr: 7,
+        title: 'Timeslots bearbeiten [Responsible]',
+        notes: 'CRUD Timeslots',
+        routes: [
+          {method: 'GET', endpoint: '/timeslots'},
+          {method: 'POST', endpoint: '/timeslots', body: {
+            starts: '10:30',
+            ends: '12:00',
+            maxParticipants: 25,
+            participation: {id: 1}
+          }},
+          {method: 'GET', endpoint: '/timeslots/1'},
+          {method: 'PUT', endpoint: '/timeslots/1', body: {
+            starts: '10:30',
+            ends: '12:00',
+            maxParticipants: 45,
+            participation: {id: 1}
+          }},
+          {method: 'DELETE', endpoint: '/timeslots/1'},
+        ],
+      },
+      {
+        nr: 8,
+        title: 'Anmeldungen ansehen [Admin]',
+        notes: 'Get Participations',
+        routes: [
+          {method: 'GET', endpoint: '/events/1/participations'},
+        ],
+      },
+      {
+        nr: 9,
+        title: 'Emails senden [Admin]',
+        notes: 'Create Mails',
+        routes: [
+          {method: 'POST', endpoint: '/mails', body: {
+            at: '2021-02-19',
+            time: '23:59',
+            subject: 'Mail Subject',
+            content: '...',
+            sender: {type: 'admin', id: 1},
+            receivers: [{type: 'responsible', id: 2}]
+          }},
+        ],
+      },
+      {
+        nr: 10,
+        title: 'Emails einsehen [Admin]',
+        notes: 'Get Mails',
+        routes: [
+          {method: 'GET', endpoint: '/mails'},
+          {method: 'GET', endpoint: '/mails/1'},
+        ],
+      },
+      {
+        nr: 11,
+        title: 'Timeslot joinen [Pupil]',
+        notes: 'Add Pupil to Timeslot',
+        routes: [
+          {method: 'PUT', endpoint: '/timeslots/1/pupils/3'},
+        ],
+      },
+      {
+        nr: 12,
+        title: 'Timeslot leaven [Pupil]',
+        notes: 'Remove Pupil from Timeslot',
+        routes: [
+          {method: 'DELETE', endpoint: '/timeslots/1/pupils/3'},
+        ],
+      },
+      {
+        nr: 13,
+        title: 'Firmentag abrechnen [Admin]',
+        notes: 'Pay Participation',
+        routes: [
+          {method: 'PATCH', endpoint: '/events/1/participations/1/pay'},
+        ],
+      },
+      {
+        nr: 14,
+        title: 'Offene Abrechnungen einmahnen [Admin]',
+        notes: 'List all unpaid Participations',
+        routes: [
+          {method: 'GET', endpoint: '/events/1/participations/unpaid'},
+        ],
+      },
+      {
+        nr: 15,
+        title: 'Firmentag statistisch auswerten [Admin]',
+        notes: 'Participating Companies with the nr of Pupils joining their Timeslots (DESC)',
+        routes: [
+          {method: 'GET', endpoint: '/events/1/stats'},
+        ],
+      },
+      {
+        nr: 16,
+        title: 'User Daten bearbeiten [Admin]',
+        notes: 'CRUD für User',
+        routes: [
+          {method: 'GET', endpoint: '/users'},
+          {method: 'POST', endpoint: '/users', body: {
+            type: 'admin', 
+            email: 'admin@mail.com', 
+            name: 'Admin', 
+            pwdToken: '1234'
+          }},
+          {method: 'POST', endpoint: '/users', body: {
+            type: 'responsible', 
+            email: 'responsible@mail.com', 
+            name: 'Responsible', 
+            pwdToken: '1234'
+          }},
+          {method: 'POST', endpoint: '/users', body: {
+            type: 'pupil', 
+            email: 'pupil@mail.com', 
+            name: 'Pupil', 
+            pwdToken: '1234'
+          }},
+          {method: 'GET', endpoint: '/users/1'},
+          {method: 'PUT', endpoint: '/users/1', body: {
+            type: 'admin', 
+            email: 'admin@mail.com', 
+            name: 'Adminos', 
+            pwdToken: '4321'
+          }},
+          {method: 'DELETE', endpoint: '/users/1'},
+        ],
+      },
+    ];
+  </script>
+
+
+
+  <!-- TEMPLATES -->
+  <div id="app"></div>
+  <script>
+    const html = htm.bind(React.createElement);
+    const baseUrl = 'http://localhost:8090';
+
+    ReactDOM.render(html`<${App} />`, document.querySelector('#app'));
+
+
+    function App(props) {
+      return html`
+        <main className="min-h-screen w-full flex items-center justify-center flex-wrap bg-gray-200">
+          <section className="w-11/12 p-5 m-8 bg-gray-50 rounded shadow-lg">
+            DB User: 'usr', DB Password: 'pwd'  
+          </section>
+          ${cards.map(({nr, title, notes, routes}) => html`
+            <${Card} key=${nr} nr=${nr} title=${title} notes=${notes} routes=${routes}/>
+          `)}
+        </main>
+      `;
+    }
+
+    function Card(props) {
+      let {nr, title, notes, routes} = props;
+      notes = notes ?? '...';
+      routes = routes ?? [];
+
+      const [response, setResponse] = React.useState('');
+      return html`
+        <section style=${{width: '32rem'}} className="p-5 m-8 bg-gray-50 rounded shadow-lg">
+          <h3 className="text-xl font-medium text-green-400"><span className="pr-2 text-green-800">#${nr}</span>${title}</h3>
+          <p className="my-2 text-sm text-gray-600 italic">Notes: ${notes}</p>
+          <section className="flex items-center flex-wrap">
+            ${routes.map(route => {
+              const {method, endpoint, body} = route;
+
+              return html`
+                <${RouteBtn} key=${method + endpoint + JSON.stringify(body)} action=${getRouteAction(route, setResponse)} method=${method} endpoint=${endpoint} body=${body}/>
+              `;
+            })}
+          </section>
+          <output style=${{whiteSpace: 'pre-wrap', display: response ? 'block' : 'none'}} className="relative max-h-96 p-4 mt-3 bg-gray-100 rounded shadow-inner overflow-auto">
+            <button onClick=${() => setResponse('')} style=${{outline: 'none'}} className="fas fa-broom h-4 w-4 absolute top-2 right-2 z-10 leading-none text-center text-gray-300 hover:font-bold hover:text-gray-500 transition-all duration-700"></button>
+            ${response}
+          </output>
+        </section>
+      `;
+    }
+
+    function RouteBtn(props) {
+      const {method, endpoint, body, action} = props;
+      
+      return html`
+        <button onClick=${action} className="py-1 px-2 m-1 bg-green-500 text-gray-200 rounded shadow-md hover:bg-green-600 transition-all duration-700">
+          <span className="pr-2 text-gray-100">${method}</span>${endpoint}
+        </button>
+      `;
+    }
+
+    function getRouteAction({method, endpoint, body}, setResponse) {
+      const fetchOptions = body
+        ? {method, headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)}
+        : {method};
+
+      return sendRequest =()=> {
+        fetch(`${baseUrl}${endpoint}`, fetchOptions)
+        .then(async res => {
+          const body = await res.text();
+          const cleanedBody = body
+            .replace(/[\\]r/g, '\r')
+            .replace(/[\\]n/g, '\n')
+            .replace(/[\\]t/g, '\t');
+
+          setResponse(`Status: ${res.status}\nBody:\n${cleanedBody}`);
+        })
+        .catch(err => {
+          setResponse(err.toString());
+        });
+      };
+    }
+  </script>
+</body>
+</html>

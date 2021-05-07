@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+    
+        let linkEntries =  [
+            {'label':'Admins','to':'/api/admins'},
+            {'label':'Pupils','to':'/api/pupils'},
+            {'label':'Responsibles','to':'/api/responsibles'},
+            {'label':'Companies','to':'/api/companies'},
+            {'label':'Departments','to':'/api/departments'},
+            {'label':'Events','to':'/api/events'},
+            {'label':'Mails','to':'/api/mails'},
+            {'label':'Participations','to':'/api/participations'},
+            {'label':'Timeslots','to':'/api/timeslots'},
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let list = document.getElementById('linkList');
+            linkEntries.forEach((obj) => {
+                let element = document.createElement('a');
+                element.href = obj.to;
+                element.text = obj.label;
+                list.appendChild(element);
+                list.appendChild(document.createElement('br'));
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Hello this is the Spring-Boot JPA demo</h1>
+<p>Here are some links to look at the data</p>
+<div id="linkList"></div>
+<h2>Get your hands dirty in the testing view</h2>
+<a href="/testdata.html"><button>Click here!</button></a>
+</body>
+</html>
