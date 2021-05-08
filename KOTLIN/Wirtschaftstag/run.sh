@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Opening WebBrowser"
-firefox http://localhost:8080/static/index.html
+firefox http://localhost:8080/
 
 echo "gradling"
 cd ./18_Tomassetti_AsyncTasks
