@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  springbootapp:
+    image: springdatajpa
+    container_name: SpringDataJPA
+    depends_on:
+      - mysqlDB
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://10.0.0.82:3306/db
+    ports:
+      - 8080:8081
+  mysqlDB:
+    image: mysql
+    container_name: SpringDataDB
+    restart: always
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: usr
+      MYSQL_PASSWORD: pwd
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <Button
+            android:text="Add Event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/button_add_event"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="25dp" android:layout_marginEnd="25dp"
+            android:backgroundTint="@color/design_default_color_secondary_variant"/>
+    <EditText
+            android:hint="Label"
+            android:layout_width="340dp"
+            android:layout_height="50dp" android:id="@+id/etLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="36dp" app:layout_constraintHorizontal_bias="0.492"/>
+    <EditText
+            android:hint="Date"
+            android:layout_width="340dp"
+            android:layout_height="50dp" android:id="@+id/etDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/etLabel"
+            android:layout_marginTop="36dp" app:layout_constraintHorizontal_bias="0.492"/>
+    <EditText
+            android:hint="Default price"
+            android:layout_width="340dp"
+            android:layout_height="50dp" android:id="@+id/etPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/etDate"
+            android:layout_marginTop="36dp" app:layout_constraintHorizontal_bias="0.492"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

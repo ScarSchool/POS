@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_events">
+
+    <fragment
+        android:id="@+id/nav_events"
+        android:name="com.example.wtmobile.ui.event.EventFragment"
+        android:label="@string/menu_events"
+        tools:layout="@layout/fragment_events" />
+
+    <fragment
+        android:id="@+id/nav_companies"
+        android:name="com.example.wtmobile.ui.company.CompanyFragment"
+        android:label="@string/menu_companies"
+        tools:layout="@layout/fragment_companies" />
+
+    <fragment
+            android:id="@+id/nav_users"
+            android:name="com.example.wtmobile.ui.event.UserFragment"
+            android:label="@string/menu_users"
+            tools:layout="@layout/fragment_users" />
+</navigation>
