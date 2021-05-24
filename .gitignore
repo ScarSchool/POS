@@ -1,3 +1,5 @@
 /.metadata/
 
 *.zip
+build
+target
