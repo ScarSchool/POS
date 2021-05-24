@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="janssen.javafx.controllers.SalesCreateController">
+  <children>
+    <ScrollPane hbarPolicy="NEVER" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+      <content>
+        <VBox>
+          <padding>
+            <Insets bottom="24" left="24" right="24" top="24" />
+          </padding>
+          <children>
+            <Label text="New Sales">
+              <font>
+                <Font name="System Bold" size="18" />
+              </font>
+              <VBox.margin>
+                <Insets bottom="24" />
+              </VBox.margin>
+            </Label>
+            <Label text="Shelter:">
+              <VBox.margin>
+                <Insets bottom="4" />
+              </VBox.margin>
+            </Label>
+            <ChoiceBox fx:id="cbShelter">
+              <VBox.margin>
+                <Insets bottom="12" />
+              </VBox.margin>
+            </ChoiceBox>            <Label text="Animal:">
+              <VBox.margin>
+                <Insets bottom="4" />
+              </VBox.margin>
+            </Label>
+            <ChoiceBox fx:id="cbAnimal">
+              <VBox.margin>
+                <Insets bottom="12" />
+              </VBox.margin>
+            </ChoiceBox>            <Label text="Price:">
+              <VBox.margin>
+                <Insets bottom="4" />
+              </VBox.margin>
+            </Label>
+            <TextField fx:id="tfPrice" promptText="price">
+              <VBox.margin>
+                <Insets bottom="12" />
+              </VBox.margin>
+            </TextField>            <Label text="Date:">
+              <VBox.margin>
+                <Insets bottom="4" />
+              </VBox.margin>
+            </Label>
+            <DatePicker fx:id="dpDate" promptText="date">
+              <VBox.margin>
+                <Insets bottom="12" />
+              </VBox.margin>
+            </DatePicker>
+            <Button text="Create" onAction="#create">
+              <VBox.margin>
+                <Insets top="24" />
+              </VBox.margin>
+            </Button>
+            <Label fx:id="lblErrors">
+              <VBox.margin>
+                <Insets top="12" />
+              </VBox.margin>
+            </Label>
+          </children>
+        </VBox>
+      </content>
+    </ScrollPane>
+  </children>
+</AnchorPane>

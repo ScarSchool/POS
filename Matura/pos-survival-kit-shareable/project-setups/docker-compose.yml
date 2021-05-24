@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  app:
+    image: openjdk:11-jdk-oracle
+    container_name: app
+    command: /wait-for-it.sh database:3306 --strict --timeout=300 -- java -jar /app.jar
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/db
+    volumes:
+      - ./wait-for-it.sh:/wait-for-it.sh
+      - ./target/app-1.0.jar:/app.jar
+  
+  database:
+    image: mysql
+    container_name: database
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: usr
+      MYSQL_PASSWORD: pwd
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - ./.mysql:/var/lib/mysql
